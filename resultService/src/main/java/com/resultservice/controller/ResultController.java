@@ -1,4 +1,4 @@
-package com.user.resultservice.controller;
+package com.resultservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.user.resultservice.model.Result;
-import com.user.resultservice.service.ResultService;
+import com.resultservice.model.AnnualResult;
+import com.resultservice.service.ResultService;
 
 @RestController
 @CrossOrigin("*")
@@ -20,12 +20,12 @@ public class ResultController {
 	@Autowired ResultService resultService;
 	
 	@GetMapping("/get/{studentid}")
-	public Result getResult(@PathVariable String studentid) {
-		return resultService.getService(studentid);
+	public AnnualResult getResult(@PathVariable Long studentid) {
+		return resultService.getResult(studentid);
 	}
 	
 	@PostMapping("/save")
-	public Result saveResult(@RequestBody Result result) {
+	public AnnualResult saveResult(@RequestBody AnnualResult result) {
 		return resultService.saveResult(result);
 	}
 	
